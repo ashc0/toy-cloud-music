@@ -12,7 +12,7 @@ export default {
 
 <style>
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   height: 9vh;
   display: flex;
@@ -20,5 +20,6 @@ export default {
   justify-content: space-around;
   width: 100%;
   border-top: 1px solid #999;
+  background-color: #fff;
 }
 </style>

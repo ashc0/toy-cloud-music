@@ -1,5 +1,5 @@
 <template>
-  <swiper :img="img">
+  <swiper :img="img" style="overflow: hidden">
 
   </swiper>
 </template>

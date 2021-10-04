@@ -4,19 +4,13 @@
   </div>
 </template>
 
-<script>
-export default {
-
-}
-</script>
-
 <style scoped>
 .slide-wrapper {
   display: inline-block;
-  position: absolute
+  position: absolute;
 }
 
-.slide-wrapper img{
+.slide-wrapper img {
   width: 100vw;
 }
 </style>

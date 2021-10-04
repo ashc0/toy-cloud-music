@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper">
-    <div class="slide-wrapper" ref="swiper">
+    <div class="slide-wrapper">
       <transition-group name="aaa" tag="div" class="tc">
         <slide v-for="(item, idx) in img" :key="item" v-show="idx === curIdx">
-          <img :src="item"/>
+          <img :src="item" />
         </slide>
       </transition-group>
     </div>
@@ -36,11 +36,8 @@ export default {
     slide,
   },
   computed: {
-    array() {
-      let len = this.$slots.default.length;
-      return this.$slots.default
-        .concat(this.$slots.default[0])
-        .concat(this.$slots.default[len - 1]);
+    moveDtc() {
+      return this.touch.moveX - this.touch.startX;
     },
   },
   created() {
@@ -62,11 +59,9 @@ export default {
     // 自动滚动
     autoCircle() {
       this.timerId = setInterval(() => {
-        // if (this.curIdx === this.img.length - 1) {
-        //   this.curIdx = 0;
-        // } else 
-        this.curIdx = (this.curIdx+1)%(this.img.length);
-        console.log(this.curIdx);
+        this.prevIdx = this.curIdx;
+        this.curIdx = (this.curIdx + 1) % this.img.length;
+        this.nextIdx = (this.curIdx + 1) % this.img.length;
       }, this.opt.gdpl);
     },
   },
@@ -90,7 +85,7 @@ export default {
 .tc {
   position: relative;
   overflow: hidden;
-  height: 300px;
+  height: 22vh;
 }
 
 .aaa-enter-active {

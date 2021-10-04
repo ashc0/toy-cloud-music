@@ -12,5 +12,8 @@
   color: #fff;
   background-color: rgb(245, 65, 65);
   text-align: center;
+  position: fixed;
+  top: 0;
+  z-index: 99
 }
 </style>

@@ -1,27 +1,57 @@
 <template>
   <div id="app">
-    <main-swiper :img="img"/>
+    <main-swiper :img="img" class="swiper"/>
+    <scroll>
+      <playlist
+        v-for="item in playlists"
+        :key="item.id"
+        :coverUrl="item.coverImgUrl"
+        :id="item.id"
+        :desc="item.description"
+        :name="item.name"
+      />
+    </scroll>
   </div>
 </template>
 <script>
-import MainSwiper from '../common/mainSwiper.vue';
+import MainSwiper from "../common/mainSwiper.vue";
+import Scroll from "../common/scroll.vue";
+import Playlist from "../components/Main/playlist.vue";
 
 export default {
   components: {
     MainSwiper,
+    Scroll,
+    Playlist,
   },
   data() {
     return {
-      img: [
-        "http://p1.music.126.net/Mk4mxcQdNAEppOS29d_g2w==/109951166479774175.jpg?imageView&quality=89",
-        "http://p1.music.126.net/vfVq8ykignMPSwm5V85iVw==/109951166475891788.jpg?imageView&quality=89",
-        "http://p1.music.126.net/Z60AzIQuaua_CgMDves0Ug==/109951166479792571.jpg?imageView&quality=89",
-        "http://p1.music.126.net/rSAIODhNbS4LiVNcLFA0GA==/109951166480415764.jpg?imageView&quality=89",
-      ],
+      img: [],
+      isSwiperShow: false,
+      playlists: [],
+      isPlaylistShow: false
     };
+  },
+  created() {
+    this.$api.getBanner().then((res) => {
+      this.img = res.data.banners.map((item) => item.pic);
+      this.isSwiperShow = true
+    });
+
+    this.$api.getPlaylist().then((res) => {
+      this.playlists = res.data.playlists.map((item) => ({
+        id: item.id,
+        coverImgUrl: item.coverImgUrl,
+        description: item.description,
+        name: item.name,
+      }));
+      this.isPlaylistShow = true
+    });
   },
 };
 </script>
-<style lang="less">
-
+<style>
+.swiper {
+  margin-top: 8vh;
+}
 </style>
