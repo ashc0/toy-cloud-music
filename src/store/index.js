@@ -5,9 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    timerId: 0
+    isRequesting: false,
   },
   mutations: {
+    startRequesting(state) {
+      state.isRequesting = true ;
+    },
+    endRequesting(state) {
+      state.isRequesting = false
+    }
   },
   actions: {
   },

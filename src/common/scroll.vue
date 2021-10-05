@@ -1,11 +1,25 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" @touchmove="move" ref="sc">
     <slot />
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    move() {
+      if (!this.isRequesting) {
+        if (
+          this.$refs.sc.getBoundingClientRect().bottom <=
+          window.innerHeight * 0.95
+        ) {
+          console.log(777);
+          this.$emit("getMore");
+        }
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>

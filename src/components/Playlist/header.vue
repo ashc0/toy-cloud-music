@@ -1,22 +1,22 @@
 <template>
-  <div id="wrapper" @click="emitId">
+  <div id="wrapper" @click="showDetail">
     <div class="cover">
-      <img :src="coverUrl" />
+      <img :src="detail.coverImgUrl" />
     </div>
 
     <div class="text">
-      <div class="title">{{ name }}</div>
-      <div class="desc">{{ desc }}</div>
+      <div class="title">{{ detail.name }}</div>
+      <div class="desc">{{ detail.description }}</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["coverUrl", "name", "id", "desc"],
+  props: ['detail'],
   methods: {
-    emitId() {
-      this.$emit('toList',this.id)
+    showDetail() {
+
     }
   }
 };
@@ -26,7 +26,7 @@ export default {
 #wrapper {
   box-sizing: border-box;
   width: 100%;
-  height: 16vh;
+  height: 20vh;
   padding: 0.8rem;
   display: flex;
   flex: 1;
@@ -34,12 +34,12 @@ export default {
 }
 
 .cover {
-  height: 13vh;
-  width: 13vh;
+  height: 16vh;
+  width: 16vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
+  border-radius: 10px;
   overflow: hidden;
 }
 
@@ -56,11 +56,6 @@ export default {
 }
 .title {
   display: inline-block;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  text-overflow: ellipsis;
   font-weight: bold;
 }
 .desc {
@@ -68,7 +63,7 @@ export default {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   text-overflow: ellipsis;
   font-size: 0.8rem;
   letter-spacing: 1px;

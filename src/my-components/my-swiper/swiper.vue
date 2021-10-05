@@ -85,7 +85,7 @@ export default {
 .tc {
   position: relative;
   overflow: hidden;
-  height: 22vh;
+  height: 39vw;
 }
 
 .aaa-enter-active {

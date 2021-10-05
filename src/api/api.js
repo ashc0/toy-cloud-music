@@ -20,7 +20,25 @@ function getPlaylist(offset = 0) {
     }
   })
 }
+
+function getPlaylistDetail(id) {
+  return axiosInstance({
+    url: '/playlist/detail',
+    method: 'GET',
+    params: { id }
+  })
+}
+
+function getSongDetail(ids) {
+  return axiosInstance({
+    url: '/song/detail',
+    method: 'GET',
+    params: { ids: ids }
+  })
+}
 export default {
   getBanner,
-  getPlaylist
+  getPlaylist,
+  getPlaylistDetail,
+  getSongDetail
 }

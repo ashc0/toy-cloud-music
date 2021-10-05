@@ -18,7 +18,7 @@ export default {
   components: {
     mainHeader: header,
     mainFooter: footer,
-  },
+  }
 };
 </script>
 
