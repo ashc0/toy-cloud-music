@@ -1,73 +1,45 @@
 <template>
-  <div id="wrapper" @click="showDetail">
-    <div class="cover">
-      <img :src="detail.coverImgUrl" />
-    </div>
-
-    <div class="text">
-      <div class="title">{{ detail.name }}</div>
-      <div class="desc">{{ detail.description }}</div>
+  <div id="header">
+    <div class="content">
+      <div class="back" @click="back">←</div>
+      <span class="title">{{ title }}</span>
     </div>
   </div>
 </template>
-
 <script>
 export default {
-  props: ['detail'],
+  props: ["title"],
   methods: {
-    showDetail() {
-
+    back() {
+      // console.log(this.$router);
+      this.$router.replace('/')
     }
   }
 };
 </script>
-
 <style scoped>
-#wrapper {
-  box-sizing: border-box;
+#header {
   width: 100%;
-  height: 20vh;
-  padding: 0.8rem;
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
+  height: 8vh;
+  line-height: 8vh;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: rgb(245, 65, 65);
+  position: fixed;
+  top: 0;
+  z-index: 99999999;
 }
-
-.cover {
-  height: 16vh;
-  width: 16vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.cover img {
-  width: 100%;
-}
-.text {
-  margin-left: 1rem;
-  height: 13vh;
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.back {
+  position: absolute;
+  left: 3vw;
 }
 .title {
-  display: inline-block;
-  font-weight: bold;
-}
-.desc {
-  display: inline-block;
+  position: absolute;
+  left: 11vw;
+  width: 80%;
+  white-space: nowrap;
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
   text-overflow: ellipsis;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  line-height: 1.5;
-  opacity: .9;
 }
 </style>

@@ -1,17 +1,80 @@
 <!DOCTYPE html>
 <html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript>
+  <div id="app">
+    <div id="banner-vvv"></div>
+
+    <div id="wrapper-vvv">
+      <div class="cover-vvv"></div>
+      <div class="text-vvv"></div>
+    </div>
+    <div id="wrapper-vvv">
+      <div class="cover-vvv"></div>
+      <div class="text-vvv"></div>
+    </div><div id="wrapper-vvv">
+      <div class="cover-vvv"></div>
+      <div class="text-vvv"></div>
+    </div><div id="wrapper-vvv">
+      <div class="cover-vvv"></div>
+      <div class="text-vvv"></div>
+    </div>
+
+  </div>
+  <!-- built files will be auto injected -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #banner-vvv {
+      width: 100%;
+      height: 22vh;
+      background-color: rgb(243, 242, 242);
+      margin-top: 8vh;
+    }
+
+    #wrapper-vvv {
+      box-sizing: border-box;
+      width: 100%;
+      height: 16vh;
+      padding: 0.8rem;
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .cover-vvv {
+      height: 13vh;
+      width: 13vh;
+      background-color: rgb(243, 242, 242);
+    }
+
+
+
+    .text-vvv {
+      margin-left: 1rem;
+      height: 13vh;
+      width: 70%;
+      background-color: rgb(243, 242, 242);
+
+    }
+  </style>
+</body>
+
 </html>

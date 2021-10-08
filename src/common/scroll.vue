@@ -5,6 +5,7 @@
 </template>
 
 <script>
+
 export default {
   methods: {
     move() {
@@ -17,7 +18,7 @@ export default {
           this.$emit("getMore");
         }
       }
-    },
+    }
   },
 };
 </script>

@@ -33,7 +33,10 @@ function getSongDetail(ids) {
   return axiosInstance({
     url: '/song/detail',
     method: 'GET',
-    params: { ids: ids }
+    params: {
+      ids: ids,
+      br: 320000
+    }
   })
 }
 export default {

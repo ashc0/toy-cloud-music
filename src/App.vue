@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <main-header />
-    <router-view />
+    <keep-alive>
+      <router-view />
+    </keep-alive>
+
     <main-footer>
       <router-link to="/">首页</router-link>
       <router-link to="/rank">排行</router-link>
@@ -18,7 +21,7 @@ export default {
   components: {
     mainHeader: header,
     mainFooter: footer,
-  }
+  },
 };
 </script>
 

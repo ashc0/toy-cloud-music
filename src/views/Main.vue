@@ -2,7 +2,7 @@
   <div id="app">
     <router-view/>
     <main-swiper :img="img" class="swiper" />
-    <scroll @getMore="getMore">
+    <scroll @getMore="getMore" @click.native="tolist">
       <playlist
         v-for="item in playlists"
         :key="item.id"
@@ -10,7 +10,7 @@
         :id="item.id"
         :desc="item.description"
         :name="item.name"
-        @toList="tolist"
+        :data-id="item.id"
       />
     </scroll>
   </div>
@@ -19,6 +19,7 @@
 import MainSwiper from "../common/mainSwiper.vue";
 import Scroll from "../common/scroll.vue";
 import Playlist from "../components/Main/playlist.vue";
+import debounce from '../utils/debounce'
 
 export default {
   components: {
@@ -33,11 +34,20 @@ export default {
       playlists: [],
       isPlaylistShow: false,
       offset: 0,
+      cb: null
     };
   },
   created() {
     this.getBanner();
     this.getPlaylist();
+    this.cb = debounce(this.getMore, 500)
+  },
+  // 路由离开前会触发
+  beforeRouteLeave(to,from,next) {
+    // 记录此时的
+    this.$route.meta.x = window.pageXOffset
+    this.$route.meta.y = window.pageYOffset
+    next()
   },
   methods: {
     getBanner() {
@@ -64,6 +74,7 @@ export default {
     },
 
     getMore() {
+      // console.log(66);
       if (!this.$store.state.isRequesting) {
         //  console.log("get more playlist");
         this.$store.commit("startRequesting");
@@ -71,10 +82,11 @@ export default {
       }
     },
 
-    tolist(id) {
-      this.$router.push('/playlist?id='+id)
+    tolist(e) {
+      // console.log(e.target.dataset.id);
+      this.$router.push('/playlist?id='+e.target.dataset.id)
     },
-  },
+  }
 };
 </script>
 <style>

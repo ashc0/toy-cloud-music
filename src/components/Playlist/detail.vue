@@ -1,19 +1,28 @@
 <template>
-  <div id="wrapper">
+  <div id="wrapper" @click="showDetail" ref="dtl">
+    <div id="background">
+      <img :src="detail.coverImgUrl" width="100%"/>
+    </div>
+
     <div class="cover">
-      <img :src="coverUrl" />
+      <img :src="detail.coverImgUrl" />
     </div>
 
     <div class="text">
-      <div class="title">{{ name }}</div>
-      <div class="desc">{{ desc }}</div>
+      <div class="title">{{ detail.name }}</div>
+      <div class="desc">{{ detail.description }}</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["coverUrl", "name", "id", "desc"]
+  props: ['detail'],
+  methods: {
+    showDetail() {
+
+    }
+  }
 };
 </script>
 
@@ -21,22 +30,31 @@ export default {
 #wrapper {
   box-sizing: border-box;
   width: 100%;
-  height: 16vh;
+  height: 24vh;
   padding: 0.8rem;
   display: flex;
   flex: 1;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin-top: 8vh;
+  position: relative;
+  overflow: hidden;
+  z-index: 9999999;
 }
-
+#background {
+  filter: blur(10px);
+  z-index: -1;
+  position: absolute;
+  top: -50%;
+  opacity: .6;
+}
 .cover {
-  height: 13vh;
-  width: 13vh;
+  height: 21vh;
+  width: 21vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
+  border-radius: 10px;
   overflow: hidden;
-  pointer-events: none;
 }
 
 .cover img {
@@ -49,16 +67,10 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  pointer-events: none;
-
+  padding: 10px 0;
 }
 .title {
   display: inline-block;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  text-overflow: ellipsis;
   font-weight: bold;
 }
 .desc {
