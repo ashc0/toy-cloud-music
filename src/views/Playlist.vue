@@ -9,18 +9,18 @@
       </transition>
       <list-loading v-if="!listLoaded" />
       <transition name="load">
-        <song-list :songs="songs" v-show="listLoaded" />
+        <song-list :songs="songs" v-show="listLoaded" class="song-list"/>
       </transition>
     </div>
   </transition>
 </template>
 
 <script>
-import ListLoading from "../components/Playlist/listLoading.vue";
+import ListLoading from "../components/Playlist/list-loading.vue";
 import ListDetail from "../components/Playlist/detail.vue";
 import ListHeader from "../components/Playlist/header.vue";
 import Loading from "../components/Playlist/loading.vue";
-import SongList from "../components/Playlist/songList.vue";
+import SongList from "../common/song-list.vue";
 export default {
   components: {
     ListDetail,
@@ -78,6 +78,7 @@ export default {
           id: item.id,
           author: item.ar.map((item) => item.name),
           album: item.al.name,
+          albumCoverUrl: item.al.picUrl
         }));
         this.listLoaded = true;
       });
@@ -107,9 +108,14 @@ export default {
   position: absolute;
   width: 100vw;
   min-height: 100vh;
-  z-index: 999999;
+  z-index: 9999;
   background-color: #fff;
 }
+
+.song-list {
+  margin-top: 32vh;
+}
+
 .pl-enter-active {
   transition: all 0.3s ease;
 }

@@ -63,9 +63,7 @@ export default {
   computed: {
     // 移动距离。
     moveDtc() {
-      // if (this.moveX)
       return this.moveX - this.startX;
-      // return 0;
     },
     // 视口宽度
     viewWidth() {
@@ -198,20 +196,4 @@ export default {
 .tran {
   transition: transform 1s ease;
 }
-
-/* .v-enter-active {
-  transition: transform 1s ease;
-}
-
-.v-leave-active {
-  transition: transform 1s ease;
-} 
-
-.v-enter {
-  transform: translateX(100%);
-}
-
-.v-leave-to {
-  transform: translateX(-100%);
-} */
 </style>

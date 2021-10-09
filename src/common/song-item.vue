@@ -46,6 +46,7 @@ computed: {
   line-height: 0px;
   display: inline-block;
   position: relative;
+  pointer-events: none;
 }
 .index span {
   position: absolute;
@@ -60,6 +61,7 @@ computed: {
   width: 80%;
   margin-left: 2vw;
   padding: .2rem 0;
+  pointer-events: none;
 }
 
 .name {

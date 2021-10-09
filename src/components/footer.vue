@@ -5,16 +5,17 @@
 </template>
 
 <script>
+
 export default {
 
 }
 </script>
 
-<style>
+<style scoped>
 .footer {
   position: fixed;
   bottom: 0;
-  height: 9vh;
+  height: 7vh;
   display: flex;
   align-items: center;
   justify-content: space-around;

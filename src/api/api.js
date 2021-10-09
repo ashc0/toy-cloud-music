@@ -39,9 +39,21 @@ function getSongDetail(ids) {
     }
   })
 }
+
+function getSongUrl(id) {
+  return axiosInstance({
+    url: '/song/url',
+    method: 'GET',
+    params: {
+      id,
+      br: 320000
+    }
+  })
+}
 export default {
   getBanner,
   getPlaylist,
   getPlaylistDetail,
-  getSongDetail
+  getSongDetail,
+  getSongUrl
 }

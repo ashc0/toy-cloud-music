@@ -26,7 +26,7 @@ export default {
 <style scoped>
 .wrapper {
   margin-top: 10px;
-  margin-bottom: 9vh;
+  margin-bottom: 7vh;
   background-color: #eee;
 }
 </style>
