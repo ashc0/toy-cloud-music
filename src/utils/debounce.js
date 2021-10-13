@@ -1,6 +1,6 @@
 let debounce = (cb, delay = 500) => {
   let timer = null
-  return (...args) => {
+  return (args) => {
     clearTimeout(timer)
     timer = setTimeout(cb, delay, args)
   }

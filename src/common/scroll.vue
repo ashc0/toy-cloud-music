@@ -1,12 +1,17 @@
 <template>
-  <div class="wrapper" @touchmove="move" ref="sc">
+  <div class="wrapper" @touchmove="touchmove" ref="sc">
     <slot />
   </div>
 </template>
 
 <script>
-
+import throttle from "../utils/throttle";
 export default {
+  data() {
+    return {
+      touchmove: throttle(this.move, 100),
+    };
+  },
   methods: {
     move() {
       if (!this.isRequesting) {
@@ -18,7 +23,7 @@ export default {
           this.$emit("getMore");
         }
       }
-    }
+    },
   },
 };
 </script>

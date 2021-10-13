@@ -30,7 +30,7 @@ export default {
       img: [],
       playlists: [],
       isPlaylistShow: false,
-      offset: 0,
+      offset: 0
     };
   },
   created() {
@@ -85,3 +85,4 @@ export default {
   margin-top: 8vh;
 }
 </style>
+

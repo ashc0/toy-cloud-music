@@ -1,5 +1,7 @@
 <template>
-  <div id="header">Toy Cloud Music</div>
+  <div id="header">Toy Cloud Music
+    <div class="search">🍳</div>
+  </div>
 </template>
 
 <style scoped>
@@ -15,5 +17,15 @@
   position: fixed;
   top: 0;
   z-index: 99
+}
+
+.search {
+  height: 5vh;
+  width: 5vh;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10vh;
 }
 </style>

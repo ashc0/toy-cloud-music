@@ -140,7 +140,9 @@ export default {
     // 获取下一状态，上一张/下一张/此张
     getState(location) {
       // 判断是否需要轮换。如果移动距离不超过三分之一屏幕，则不轮换
-      if (Math.abs(this.moveDtc) <= window.viewWidth / 3) return "cur";
+      if (Math.abs(this.moveDtc) <= this.viewWidth / 3) {
+        return "cur";
+      }
       return location > this.toNextLocation ? "prev" : "next";
     },
     isNext(location) {

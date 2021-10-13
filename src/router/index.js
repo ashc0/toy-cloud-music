@@ -15,9 +15,9 @@ const routes = [
     }
   },
   {
-    path: '/rank',
-    name: 'Rank',
-    component: () => import('../views/Rank.vue')
+    path: '/search',
+    name: 'Search',
+    component: () => import('../views/Search.vue')
   },
   {
     path: '/playlist',

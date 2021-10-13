@@ -9,7 +9,7 @@
       </transition>
       <list-loading v-if="!listLoaded" />
       <transition name="load">
-        <song-list :songs="songs" v-show="listLoaded" class="song-list"/>
+        <song-list :songs="songs" v-show="listLoaded" class="song-list" />
       </transition>
     </div>
   </transition>
@@ -29,7 +29,7 @@ export default {
     Loading,
     ListLoading,
   },
-  props: ['id'],
+  props: ["id"],
   data() {
     return {
       songIds: [],
@@ -64,7 +64,6 @@ export default {
             tags: res.data.playlist.tags,
           };
           this.loaded = true;
-          // console.log(this.detail);
         })
         .then(() => {
           this.getSongs();
@@ -78,20 +77,19 @@ export default {
           id: item.id,
           author: item.ar.map((item) => item.name),
           album: item.al.name,
-          albumCoverUrl: item.al.picUrl
+          albumCoverUrl: item.al.picUrl,
         }));
         this.listLoaded = true;
       });
     },
   },
   activated() {
-    console.log(this.id);
-    console.log(this.$route);
-    this.loaded = false
+    // console.log(this.id);
+    // console.log(this.$route);
+    this.loaded = false;
     this.listLoaded = false;
     this.getPlaylistDetail();
   },
-
 
   computed: {
     ids() {
