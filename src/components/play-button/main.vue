@@ -47,12 +47,6 @@ export default {
   data() {
     return {
       isBroadcastListShow: false,
-      csong: {
-        coverurl: "",
-        name: "",
-        author: "",
-        url: "",
-      },
       url: "",
       log: ''
     };
@@ -66,6 +60,7 @@ export default {
 
     end() {
       this.pause();
+      this.toNextSong()
     },
     changeBroadcastListShow() {
       this.isBroadcastListShow = !this.isBroadcastListShow;

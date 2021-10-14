@@ -50,10 +50,36 @@ function getSongUrl(id) {
     }
   })
 }
+
+function getSearchSuggest(keywords) {
+  return axiosInstance({
+    url: '/search/suggest',
+    method: 'GET',
+    params: {
+      keywords,
+      type: 'mobile'
+    }
+  })
+}
+
+function getSearchResults(keywords, offset = 0) {
+  return axiosInstance({
+    url: '/cloudsearch',
+    method: 'GET',
+    params: {
+      keywords,
+      limit: 15,
+      offset
+    }
+  })
+}
+
 export default {
   getBanner,
   getPlaylist,
   getPlaylistDetail,
   getSongDetail,
-  getSongUrl
+  getSongUrl,
+  getSearchSuggest,
+  getSearchResults
 }

@@ -11,7 +11,6 @@ export default {
   props: ["title"],
   methods: {
     back() {
-      // console.log(this.$router);
       this.$router.replace('/')
     }
   }

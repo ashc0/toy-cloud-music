@@ -66,11 +66,11 @@ export default {
           this.loaded = true;
         })
         .then(() => {
-          this.getSongs();
+          this.getPlaylistSongs();
         });
     },
 
-    getSongs() {
+    getPlaylistSongs() {
       this.$api.getSongDetail(this.ids).then((res) => {
         this.songs = res.data.songs.map((item) => ({
           name: item.name,
@@ -84,8 +84,6 @@ export default {
     },
   },
   activated() {
-    // console.log(this.id);
-    // console.log(this.$route);
     this.loaded = false;
     this.listLoaded = false;
     this.getPlaylistDetail();

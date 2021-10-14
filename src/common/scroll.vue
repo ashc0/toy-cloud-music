@@ -19,7 +19,6 @@ export default {
           this.$refs.sc.getBoundingClientRect().bottom <=
           window.innerHeight * 0.95
         ) {
-          console.log(777);
           this.$emit("getMore");
         }
       }
