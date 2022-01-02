@@ -1,8 +1,11 @@
 <template>
   <div id="app">
     <MainHeader />
+    <div id="ld-wrapper" v-if="!firstPageLoaded">
+      <div class="content">Loading</div>
+    </div>
     <keep-alive>
-      <router-view />
+      <router-view/>
     </keep-alive>
     <PlayButton />
   </div>
@@ -13,11 +16,14 @@ import header from "@/components/header.vue";
 
 import PlayButton from "@/components/play-button/main.vue";
 
-import { mapMutations } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
   components: {
     MainHeader: header,
     PlayButton,
+  },
+  computed: {
+    ...mapState(["firstPageLoaded"]),
   },
   methods: {
     ...mapMutations(["initTrackQueue", "initCurrentSong"]),
@@ -35,5 +41,23 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.wrapper {
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: red;
+  font-size: 2rem;
+  font-weight: bold;
+}
 </style>

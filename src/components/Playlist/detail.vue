@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper" @click="showDetail" ref="dtl">
     <div id="background">
-      <img :src="detail.coverImgUrl" width="100%"/>
+      <img :src="detail.coverImgUrl" width="100%" loading="lazy"/>
     </div>
 
     <div class="cover">

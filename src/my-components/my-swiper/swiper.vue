@@ -6,7 +6,7 @@
       @touchmove="move"
       @touchend="end"
     >
-      <div class="tc">
+      <div class="tc" ref="tc">
         <slide
           v-for="(item, idx) in img"
           :key="item"
@@ -23,7 +23,7 @@
                 : '',
           }"
         >
-          <img :src="item" />
+          <img :src="item" decoding="async" width="100vw"/>
         </slide>
       </div>
     </div>
@@ -166,6 +166,7 @@ export default {
   mounted() {
     this.$nextTick(() => {
       this.init();
+      // console.log(this.);
     });
   },
   beforeDestroy() {

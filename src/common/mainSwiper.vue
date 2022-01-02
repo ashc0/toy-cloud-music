@@ -1,7 +1,7 @@
 <template>
-  <swiper :img="img" style="overflow: hidden">
-
-  </swiper>
+  <div>
+    <swiper :img="img" style="overflow: hidden"></swiper>
+  </div>
 </template>
 
 <script>
@@ -11,11 +11,11 @@ export default {
   props: {
     img: {
       type: Array,
-      required: true,
-    },
+      required: true
+    }
   },
   components: {
     swiper,
-  },
+  }
 };
 </script>

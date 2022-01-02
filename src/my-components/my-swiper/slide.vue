@@ -8,6 +8,7 @@
 .slide-wrapper {
   display: inline-block;
   position: absolute;
+  will-change: transform;
 }
 
 .slide-wrapper img {

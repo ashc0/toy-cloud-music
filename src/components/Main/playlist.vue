@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  props: ["coverUrl", "name", "id", "desc"]
+  props: ["coverUrl", "name", "id", "desc"],
 };
 </script>
 
@@ -41,6 +41,7 @@ export default {
 
 .cover img {
   width: 100%;
+  background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fa29f11ce5db6c9c45313db2bb420f7280b1ee770.png&refer=http%3A%2F%2Fi0.hdslb.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1636368013&t=c0d02d0dc9dbe765e33a8aba83fc2a04);
 }
 .text {
   margin-left: 1rem;
@@ -50,7 +51,6 @@ export default {
   flex-direction: column;
   justify-content: space-around;
   pointer-events: none;
-
 }
 .title {
   display: inline-block;
@@ -71,6 +71,6 @@ export default {
   font-size: 0.8rem;
   letter-spacing: 1px;
   line-height: 1.5;
-  opacity: .9;
+  opacity: 0.9;
 }
 </style>

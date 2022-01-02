@@ -45,7 +45,6 @@ export default {
     },
 
     input() {
-      console.log(1);
       if (this.keywords !== "") {
         this.$api.getSearchSuggest(this.keywords).then((res) => {
           this.searchSuggest = res.data.result.allMatch.map(
@@ -62,8 +61,7 @@ export default {
     getSearchResults(keywords, offset) {
       this.isRequesting = true
       this.$api.getSearchResults(keywords, offset).then((res) => {
-        console.log(res);
-        this.searchResults = this.searchResults.concat(
+        this.searchResults = Object.freeze(this.searchResults.concat(
           res.data.result.songs.map((item) => ({
             id: item.id,
             name: item.name,
@@ -71,7 +69,7 @@ export default {
             album: item.al.name,
             author: item.ar.map((item) => item.name),
           }))
-        );
+        ));
         this.isRequesting = false
         this.isSearched = true;
       });

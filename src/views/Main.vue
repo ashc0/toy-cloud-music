@@ -18,7 +18,6 @@
 import MainSwiper from "../common/mainSwiper.vue";
 import Scroll from "../common/scroll.vue";
 import Playlist from "../components/Main/playlist.vue";
-
 export default {
   components: {
     MainSwiper,
@@ -29,8 +28,9 @@ export default {
     return {
       img: [],
       playlists: [],
-      isPlaylistShow: false,
-      offset: 0
+      offset: 0,
+      playlistShow: false,
+      swiperShow: false,
     };
   },
   created() {
@@ -47,23 +47,37 @@ export default {
   methods: {
     getBanner() {
       this.$api.getBanner().then((res) => {
-        this.img = res.data.banners.map((item) => item.pic);
+        this.img = Object.freeze(res.data.banners.map((item) => item.pic));
+        // this.$nextTick(() => {
+          if (!this.swiperShow) {
+            this.swiperShow = true;
+            if (this.playlistShow) this.$store.commit("changeFirstPageLoaded");
+          }
+        // });
       });
     },
 
     getPlaylist(offset) {
       this.$api.getPlaylist(offset).then((res) => {
+        if (this.playlists.length === 1) this.playlists = [];
         this.playlists = this.playlists.concat(
           res.data.playlists.map((item) => ({
             id: item.id,
-            coverImgUrl: item.coverImgUrl,
+            coverImgUrl: item.coverImgUrl + "?param=100y100",
             description: item.description,
             name: item.name,
           }))
         );
-        this.$nextTick(() => {
+
+        // this.$nextTick(() => {
+          if (!this.playlistShow) {
+            this.playlistShow = true;
+            if (this.swiperShow) this.$store.commit("changeFirstPageLoaded");
+          }
+
+          // 确保加载完成才能上拉加载更多，否则多次上拉会一下加载一大坨
           this.$store.commit("endRequesting");
-        });
+        // });
       });
     },
 

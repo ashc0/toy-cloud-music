@@ -56,7 +56,9 @@ export default {
       this.$api
         .getPlaylistDetail(this.id)
         .then((res) => {
-          this.songIds = res.data.playlist.trackIds.map((item) => item.id);
+          this.songIds = Object.freeze(
+            res.data.playlist.trackIds.map((item) => item.id)
+          );
           this.detail = {
             coverImgUrl: res.data.playlist.coverImgUrl,
             description: res.data.playlist.description,
@@ -64,21 +66,24 @@ export default {
             tags: res.data.playlist.tags,
           };
           this.loaded = true;
-        })
-        .then(() => {
           this.getPlaylistSongs();
-        });
+        })
+        // .then(() => {
+        //   this.getPlaylistSongs();
+        // });
     },
 
     getPlaylistSongs() {
       this.$api.getSongDetail(this.ids).then((res) => {
-        this.songs = res.data.songs.map((item) => ({
-          name: item.name,
-          id: item.id,
-          author: item.ar.map((item) => item.name),
-          album: item.al.name,
-          albumCoverUrl: item.al.picUrl,
-        }));
+        this.songs = Object.freeze(
+          res.data.songs.map((item) => ({
+            name: item.name,
+            id: item.id,
+            author: item.ar.map((item) => item.name),
+            album: item.al.name,
+            albumCoverUrl: item.al.picUrl,
+          }))
+        );
         this.listLoaded = true;
       });
     },
